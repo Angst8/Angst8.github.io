@@ -1,0 +1,132 @@
+site_name: 运动控制 · 足式机器人
+site_url: https://angst8.github.io/
+site_description: 运动控制算法工程师的项目作品与技术笔记：足式机器人、轮腿平衡、强化学习与 Sim2Real。
+repo_url: https://github.com/Angst8/Angst8.github.io
+repo_name: Angst8/Angst8.github.io
+edit_uri: edit/main/docs/
+copyright: >-
+  内容采用
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans">CC BY-NC 4.0</a> 授权
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+  font: false # 不加载 Google Fonts，国内访问更稳；字体栈见 assets/css/extra.css
+  logo: assets/img/logo.png
+  favicon: favicon-32x32.png
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/eye-outline
+        name: 切换到浅色模式
+    - scheme: default
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/eye
+        name: 切换到深色模式
+  features:
+    - navigation.tabs # 顶部分区标签
+    - navigation.sections # 侧边栏分组
+    - navigation.tracking
+    - navigation.footer # 上一篇 / 下一篇
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+
+plugins:
+  - search:
+      lang: zh
+  - glightbox:
+      auto_caption: true
+
+hooks:
+  - hooks/zr.py # 笔记标题栏、封面，以及首页 / 列表页的自动卡片
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Angst8
+      name: GitHub
+
+extra_css:
+  - assets/css/extra.css
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify # 保留中文锚点，如 #项目作品
+        kwds:
+          case: lower
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+validation:
+  omitted_files: warn
+  absolute_links: info
+  unrecognized_links: warn
+  anchors: warn
+
+nav:
+  - 首页: index.md
+  - 项目作品:
+      - 总览: projects/index.md
+      - 足式与轮腿:
+          - projects/01-legged-rl-sim2real/index.md
+          - projects/02-wheel-legged-balance/index.md
+          - projects/03-wheel-legged-rl/index.md
+      - RoboMaster 步兵:
+          - projects/04-swerve-infantry/index.md
+          - projects/05-mecanum-infantry/index.md
+      - 嵌入式与产品:
+          - projects/06-freertos-gripper-car/index.md
+          - projects/07-desktop-companion-robot/index.md
+      - 开源工具:
+          - projects/08-urdf-validator/index.md
+  - 技术笔记:
+      - 全部笔记: notes/index.md
+      - 控制算法:
+          - 单片机上的 MPC: notes/mpc-on-mcu/index.md
+          - 卡尔曼滤波调参: notes/kalman-tuning/index.md
+          - OCS2 双足 NMPC / WBC: notes/ocs2-mpc-wbc/index.md
+      - 强化学习:
+          - TensorBoard 与 PPO 调参: notes/tensorboard-ppo/index.md
+          - Isaac 环境搭建: notes/isaac-setup/index.md
+      - RoboMaster 轮腿:
+          - 轮腿平衡步兵开发日志: notes/wheel-leg-devlog/index.md
+          - RM 轮腿机械选型: notes/rm-wheel-leg-mechanics/index.md
+      - 开源工具:
+          - URDF Validator 开发记录: notes/urdf-validator/index.md
+  - 关于: about/index.md

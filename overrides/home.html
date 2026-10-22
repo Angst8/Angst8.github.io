@@ -1,0 +1,30 @@
+{#- Landing page: full-width hero under the tabs, then the Markdown body of docs/index.md.
+    Hero text, buttons and badges come from that page's front matter (`hero:`). -#}
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+  {% set hero = page.meta.hero %}
+  <section class="zr-hero">
+    <img class="zr-hero__bg" src="{{ hero.image | url }}" alt="" fetchpriority="high">
+    <div class="md-grid md-typeset zr-hero__inner">
+      <p class="zr-hero__eyebrow">{{ hero.eyebrow }}</p>
+      <h1 class="zr-hero__title">{{ hero.title }}</h1>
+      <p class="zr-hero__lead">{{ hero.lead }}</p>
+      <div class="zr-hero__actions">
+        {% for button in hero.buttons %}
+          <a class="md-button{% if loop.first %} md-button--primary{% endif %}" href="{{ button.link | url }}">{{ button.label }}</a>
+        {% endfor %}
+      </div>
+      <div class="zr-badges">
+        {% for badge in hero.badges %}
+          <a href="{{ badge.link }}" style="--zr-badge: {{ badge.color }}"><span>{{ badge.label }}</span><span>{{ badge.value }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+  <div class="zr-home">{{ page.content }}</div>
+{% endblock %}

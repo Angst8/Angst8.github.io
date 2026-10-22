@@ -1,0 +1,7 @@
+mkdocs==1.6.1
+mkdocs-material==9.7.7
+mkdocs-glightbox==0.5.2
+# glightbox 0.5.2 wraps images in a way that deletes them under selectolax 1.x; keep 0.4.x
+selectolax<1
+# Chinese word segmentation for the search index
+jieba==0.42.1
